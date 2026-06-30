@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>شبکة فناوری پارسی - داشبورد سازمان</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0d1117 0%, #161b22 100%);
+            color: #c9d1d9;
+        }
+        .header { background: linear-gradient(135deg, #0d1117 0%, #1f6feb 100%); padding: 3rem 1rem; text-align: center; border-bottom: 3px solid #1f6feb; }
+        .header h1 { font-size: 2.5rem; color: #ffffff; margin-bottom: 0.5rem; }
+        .header p { font-size: 1.1rem; color: #79c0ff; }
+        .nav-container { background: #161b22; border-bottom: 1px solid #30363d; position: sticky; top: 0; z-index: 100; }
+        .nav { max-width: 1400px; margin: 0 auto; display: flex; gap: 1rem; padding: 0 1rem; flex-wrap: wrap; justify-content: center; }
+        .nav-btn { padding: 0.8rem 1.5rem; background: transparent; border: 1px solid #30363d; color: #8b949e; cursor: pointer; border-radius: 6px; transition: all 0.3s; font-weight: 500; }
+        .nav-btn:hover, .nav-btn.active { background: #238636; color: #ffffff; border-color: #238636; }
+        .container { max-width: 1400px; margin: 0 auto; padding: 2rem 1rem; }
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-bottom: 3rem; }
+        .stat-card { background: linear-gradient(135deg, #1f6feb 0%, #0d1117 100%); padding: 2rem; border-radius: 12px; border: 1px solid #30363d; text-align: center; transition: all 0.3s; }
+        .stat-card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(31, 111, 235, 0.2); }
+        .stat-card .icon { font-size: 2.5rem; color: #58a6ff; margin-bottom: 1rem; }
+        .stat-card .number { font-size: 2rem; font-weight: 700; color: #79c0ff; display: block; }
+        .stat-card .label { color: #8b949e; font-size: 0.9rem; margin-top: 0.5rem; }
+        .section { display: none; animation: fadeIn 0.3s ease; }
+        .section.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; margin-bottom: 3rem; }
+        .project-card { background: #0d1117; border: 1px solid #21262d; border-radius: 12px; padding: 1.5rem; transition: all 0.3s; }
+        .project-card:hover { transform: translateY(-5px); background: #161b22; }
+        .project-name { font-size: 1.3rem; font-weight: 700; color: #58a6ff; margin-bottom: 0.5rem; }
+        .project-desc { color: #8b949e; font-size: 0.9rem; margin-bottom: 1rem; }
+        .project-meta { display: flex; gap: 1rem; margin-bottom: 1rem; font-size: 0.85rem; color: #8b949e; }
+        .btn { padding: 0.5rem 1rem; background: #238636; border: none; color: #ffffff; border-radius: 6px; cursor: pointer; text-decoration: none; transition: all 0.3s; }
+        .btn:hover { background: #2ea043; }
+        .demo-card { background: #0d1117; border: 2px solid #1f6feb; border-radius: 12px; padding: 2rem; text-align: center; margin-bottom: 2rem; }
+        .demo-card h3 { color: #79c0ff; margin: 1rem 0; }
+        .demo-btn { display: inline-block; padding: 0.8rem 2rem; background: linear-gradient(135deg, #1f6feb, #0d1117); border: 1px solid #1f6feb; color: #79c0ff; border-radius: 6px; text-decoration: none; margin: 0.3rem; font-weight: 600; transition: all 0.3s; }
+        .demo-btn:hover { background: linear-gradient(135deg, #238636, #0d1117); color: #ffffff; }
+        .footer { background: #0d1117; border-top: 1px solid #21262d; padding: 2rem 1rem; text-align: center; color: #8b949e; margin-top: 3rem; }
+        .footer a { color: #58a6ff; text-decoration: none; }
+        @media (max-width: 768px) { .header h1 { font-size: 1.8rem; } .projects-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>🔵 شبکة فناوری پارسی</h1>
+    <p>Persian Tech Network - GitHub Organization</p>
+</div>
+
+<div class="nav-container">
+    <div class="nav">
+        <button class="nav-btn active" onclick="showSection('dashboard', this)"><i class="fas fa-chart-line"></i> داشبورد</button>
+        <button class="nav-btn" onclick="showSection('projects', this)"><i class="fas fa-folder"></i> پروژه‌ها</button>
+        <button class="nav-btn" onclick="showSection('demos', this)"><i class="fas fa-play-circle"></i> نمایش‌ها</button>
+        <button class="nav-btn" onclick="showSection('stats', this)"><i class="fas fa-chart-pie"></i> آمارها</button>
+    </div>
+</div>
+
+<div class="container">
+
+    <div id="dashboard" class="section active">
+        <div class="stats-grid">
+            <div class="stat-card"><div class="icon"><i class="fas fa-cube"></i></div><span class="number">10</span><span class="label">پروژه</span></div>
+            <div class="stat-card"><div class="icon"><i class="fas fa-star"></i></div><span class="number">6</span><span class="label">ستاره‌ها</span></div>
+            <div class="stat-card"><div class="icon"><i class="fas fa-code-branch"></i></div><span class="number">3</span><span class="label">فورک‌ها</span></div>
+            <div class="stat-card"><div class="icon"><i class="fas fa-file-code"></i></div><span class="number">29</span><span class="label">فایل‌ها</span></div>
+            <div class="stat-card"><div class="icon"><i class="fas fa-database"></i></div><span class="number">238</span><span class="label">KB</span></div>
+            <div class="stat-card"><div class="icon"><i class="fas fa-users"></i></div><span class="number">پارسی</span><span class="label">زبان اصلی</span></div>
+        </div>
+        <h2 style="color: #79c0ff; margin: 2rem 0 1rem; font-size: 1.5rem;"><i class="fas fa-rocket"></i> آخرین پروژه‌ها</h2>
+        <div id="recentProjects" class="projects-grid"></div>
+    </div>
+
+    <div id="projects" class="section">
+        <h2 style="color: #79c0ff; margin-bottom: 2rem; font-size: 1.5rem;"><i class="fas fa-folder"></i> تمام پروژه‌های سازمان</h2>
+        <div id="projectsList" class="projects-grid"></div>
+    </div>
+
+    <div id="demos" class="section">
+        <h2 style="color: #79c0ff; margin-bottom: 2rem; font-size: 1.5rem;"><i class="fas fa-play"></i> فایل‌های قابل اجرا و نمایش‌ها</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 2rem;">
+            <div class="demo-card"><div style="font-size: 3rem; color: #58a6ff; margin-bottom: 1rem;"><i class="fas fa-battery-full"></i></div><h3>⚡ Battery v2.0.0</h3><p style="color: #8b949e; margin-bottom: 1.5rem;">محاسبه‌گر انرژی دستگاه‌ها</p><a href="https://raw.githubusercontent.com/persiantechnet/battery/main/battery%20v%202.0.0.html" class="demo-btn" target="_blank"><i class="fas fa-play"></i> اجرا کن</a></div>
+            <div class="demo-card"><div style="font-size: 3rem; color: #58a6ff; margin-bottom: 1rem;"><i class="fas fa-search"></i></div><h3>🔍 Browser HTML</h3><p style="color: #8b949e; margin-bottom: 1.5rem;">جستجوگر اچ تی ام ال</p><a href="https://raw.githubusercontent.com/persiantechnet/browserhtml/main/browser.html" class="demo-btn" target="_blank"><i class="fas fa-play"></i> اجرا کن</a></div>
+            <div class="demo-card"><div style="font-size: 3rem; color: #58a6ff; margin-bottom: 1rem;"><i class="fas fa-code"></i></div><h3>💻 HTML PRO LIVING</h3><p style="color: #8b949e; margin-bottom: 1.5rem;">نمونه‌های HTML پیشرفته</p><a href="https://github.com/persiantechnet/HTML-PRO-LIVING" class="demo-btn" target="_blank"><i class="fas fa-folder"></i> مخزن</a></div>
+            <div class="demo-card"><div style="font-size: 3rem; color: #58a6ff; margin-bottom: 1rem;"><i class="fas fa-desktop"></i></div><h3>🌐 PersiaOS</h3><p style="color: #8b949e; margin-bottom: 1.5rem;">سیستم عامل تحت وب</p><a href="https://persiantechnet.github.io/persiaos.github.io/" class="demo-btn" target="_blank"><i class="fas fa-play"></i> اجرا کن</a></div>
+            <div class="demo-card"><div style="font-size: 3rem; color: #58a6ff; margin-bottom: 1rem;"><i class="fas fa-globe"></i></div><h3>🏢 سایت اصلی</h3><p style="color: #8b949e; margin-bottom: 1.5rem;">صفحة اصلی شبکة فناوری پارسی</p><a href="https://persiantechnet.github.io/" class="demo-btn" target="_blank"><i class="fas fa-play"></i> اجرا کن</a></div>
+            <div class="demo-card"><div style="font-size: 3rem; color: #58a6ff; margin-bottom: 1rem;"><i class="fab fa-github"></i></div><h3>🔵 GitHub Profile</h3><p style="color: #8b949e; margin-bottom: 1.5rem;">صفحة جستجوی پروفایل GitHub</p><a href="https://persiantechnet.github.io/github/" class="demo-btn" target="_blank"><i class="fas fa-play"></i> اجرا کن</a></div>
+        </div>
+    </div>
+
+    <div id="stats" class="section">
+        <h2 style="color: #79c0ff; margin-bottom: 2rem; font-size: 1.5rem;"><i class="fas fa-chart-pie"></i> آمار و نمودارها</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem;">
+            <div style="background: #0d1117; border: 1px solid #21262d; border-radius: 12px; padding: 2rem;">
+                <h3 style="color: #79c0ff; margin-bottom: 1.5rem; text-align: center;">📊 توزیع پروژه‌ها بر اساس زبان</h3>
+                <div>
+                    <div style="margin-bottom: 1.5rem;"><div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;"><span style="color: #8b949e;">HTML</span><span style="color: #79c0ff;">80%</span></div><div style="background: #21262d; height: 20px; border-radius: 4px; overflow: hidden;"><div style="background: linear-gradient(90deg, #1f6feb, #58a6ff); height: 100%; width: 80%;"></div></div></div>
+                    <div style="margin-bottom: 1.5rem;"><div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;"><span style="color: #8b949e;">CSS</span><span style="color: #79c0ff;">10%</span></div><div style="background: #21262d; height: 20px; border-radius: 4px; overflow: hidden;"><div style="background: linear-gradient(90deg, #1f6feb, #58a6ff); height: 100%; width: 10%;"></div></div></div>
+                    <div style="margin-bottom: 1.5rem;"><div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;"><span style="color: #8b949e;">JS</span><span style="color: #79c0ff;">7%</span></div><div style="background: #21262d; height: 20px; border-radius: 4px; overflow: hidden;"><div style="background: linear-gradient(90deg, #1f6feb, #58a6ff); height: 100%; width: 7%;"></div></div></div>
+                    <div><div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;"><span style="color: #8b949e;">دیگر</span><span style="color: #79c0ff;">3%</span></div><div style="background: #21262d; height: 20px; border-radius: 4px; overflow: hidden;"><div style="background: linear-gradient(90deg, #1f6feb, #58a6ff); height: 100%; width: 3%;"></div></div></div>
+                </div>
+            </div>
+            <div style="background: #0d1117; border: 1px solid #21262d; border-radius: 12px; padding: 2rem;">
+                <h3 style="color: #79c0ff; margin-bottom: 1.5rem; text-align: center;">⭐ محبوبیت پروژه‌ها</h3>
+                <div>
+                    <div style="margin-bottom: 1rem; padding: 0.8rem; background: #161b22; border-radius: 6px; display: flex; justify-content: space-between;"><span>battery</span><span style="color: #79c0ff;">⭐ 5</span></div>
+                    <div style="margin-bottom: 1rem; padding: 0.8rem; background: #161b22; border-radius: 6px; display: flex; justify-content: space-between;"><span>HTML-PRO</span><span style="color: #79c0ff;">⭐ 1</span></div>
+                    <div style="margin-bottom: 1rem; padding: 0.8rem; background: #161b22; border-radius: 6px; display: flex; justify-content: space-between;"><span>persiantechnet</span><span style="color: #79c0ff;">⭐ 1</span></div>
+                    <div style="padding: 0.8rem; background: #161b22; border-radius: 6px; display: flex; justify-content: space-between;"><span>دیگر</span><span style="color: #79c0ff;">⭐ 0</span></div>
+                </div>
+            </div>
+            <div style="background: #0d1117; border: 1px solid #21262d; border-radius: 12px; padding: 2rem;">
+                <h3 style="color: #79c0ff; margin-bottom: 1.5rem; text-align: center;">📈 خلاصه آمار</h3>
+                <div style="text-align: right; line-height: 2.2;">
+                    <p>📊 <strong>کل پروژه‌ها:</strong> 10</p>
+                    <p>⭐ <strong>کل ستاره‌ها:</strong> 6</p>
+                    <p>🔀 <strong>کل فورک‌ها:</strong> 3</p>
+                    <p>📦 <strong>کل فایل‌ها:</strong> 29</p>
+                    <p>💾 <strong>حجم کل:</strong> 238 KB</p>
+                    <p>🌐 <strong>زبان اصلی:</strong> HTML</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="footer">
+    <p>© 2026 <strong>شبکة فناوری پارسی</strong> - Persian Tech Network<br><a href="https://github.com/persiantechnet" target="_blank"><i class="fab fa-github"></i> GitHub Organization</a> | <a href="https://persiantechnet.github.io/" target="_blank"><i class="fas fa-globe"></i> سایت اصلی</a></p>
+</div>
+
+<script>
+const projects = [
+    {name:"battery",desc:"محاسبه‌گر انرژی دستگاه‌ها",stars:5,forks:3},
+    {name:"HTML-PRO-LIVING",desc:"نمونه‌های HTML پیشرفته",stars:1,forks:0},
+    {name:"persiantechnet.github.io",desc:"سایت اصلی سازمان",stars:1,forks:0},
+    {name:"browserhtml",desc:"جستجوگر اچ تی ام ال",stars:0,forks:0},
+    {name:"persiaos.github.io",desc:"سیستم عامل تحت وب",stars:0,forks:0},
+    {name:"CALENDAR",desc:"تقویم تحت وب",stars:0,forks:0},
+    {name:"CALL",desc:"صفحة تماس",stars:0,forks:0},
+    {name:"github",desc:"صفحة پروفایل GitHub",stars:0,forks:0},
+    {name:"BeOnePage-Child",desc:"قالب فرزند",stars:0,forks:0},
+    {name:"persiaos.github.ir",desc:"سیستم عامل سرور",stars:0,forks:0}
+];
+
+function showSection(s,b){document.querySelectorAll('.section').forEach(x=>x.classList.remove('active'));document.getElementById(s).classList.add('active');document.querySelectorAll('.nav-btn').forEach(x=>x.classList.remove('active'));b.classList.add('active');if(s==='projects'){renderAll();}}
+
+function renderAll(){document.getElementById('projectsList').innerHTML=projects.map(p=>`<div class="project-card"><div class="project-name"><i class="fas fa-book"></i> ${p.name}</div><p class="project-desc">${p.desc}</p><div class="project-meta"><span>⭐ ${p.stars}</span><span>🔀 ${p.forks}</span></div><div><a href="https://github.com/persiantechnet/${p.name}" target="_blank" class="btn"><i class="fab fa-github"></i> مخزن</a></div></div>`).join('');}
+
+document.getElementById('recentProjects').innerHTML=projects.slice(0,3).map(p=>`<div class="project-card"><div class="project-name"><i class="fas fa-book"></i> ${p.name}</div><p class="project-desc">${p.desc}</p><div class="project-meta"><span>⭐ ${p.stars}</span><span>🔀 ${p.forks}</span></div></div>`).join('');
+</script>
+
+</body>
+</html>
